@@ -197,13 +197,12 @@ def plot_delivery_date_difference(df: DataFrame):
 
 
 def plot_order_amount_per_day_with_holidays(df: DataFrame):
-    """Plot order amount per day with holidays
+   """Plot order amount per day with holidays.
 
     Args:
-        df (DataFrame): Dataframe with order amount per day with holidays query result
+        df (DataFrame): Dataframe with columns 'date', 'order_amount', and 'is_holiday'.
+                        - 'date' (datetime): Fecha del pedido.
+                        - 'order_amount' (float): Monto total de los pedidos en ese día.
+                        - 'is_holiday' (bool): Indica si el día es festivo (True) o no (False).
     """
-    # TODO: Graficar el monto de pedidos por día con los días festivos usando matplotlib.
-    # Marcar los días festivos con líneas verticales.
-    # Sugerencia: usar plt.axvline.
-
-    raise NotImplementedError
+   print(df.info())
