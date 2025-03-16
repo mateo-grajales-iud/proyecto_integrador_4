@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 from pytest import fixture
 from src.config import QUERY_RESULTS_ROOT_PATH, DATASET_ROOT_PATH, PUBLIC_HOLIDAYS_URL
 from sqlalchemy import create_engine
@@ -42,8 +43,10 @@ def float_vectors_are_close(a: list, b: list, tolerance: float = TOLERANCE) -> b
 
 @fixture(scope="session", autouse=True)
 def database() -> Engine:
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(root_dir, "testdb.db")
     """Initialize the database for testing."""
-    engine = create_engine("sqlite://")
+    engine = create_engine(f"sqlite:///{db_path}")
     csv_folder = DATASET_ROOT_PATH
     public_holidays_url = PUBLIC_HOLIDAYS_URL
     csv_table_mapping = get_csv_to_table_mapping()

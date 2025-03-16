@@ -10,3 +10,4 @@ dataset/product_category_name_translation.csv
 olist.db
 src/__pycache__/*
 tests/__pycache__/*
+tests/testdb.db
