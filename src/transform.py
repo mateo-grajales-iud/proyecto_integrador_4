@@ -224,12 +224,9 @@ def query_orders_per_day_and_holidays_2017(database: Engine) -> QueryResult:
     orders["order_purchase_timestamp"] = pd.to_datetime(orders["order_purchase_timestamp"]).dt.normalize()
 
     filtered_dates = orders[orders["order_purchase_timestamp"].dt.year == 2017]
-    print(filtered_dates)
-
     order_purchase_ammount_per_date = filtered_dates.groupby(filtered_dates["order_purchase_timestamp"]).size()
 
     result_df = order_purchase_ammount_per_date.reset_index()
-    print(result_df)
     result_df.columns = ["date", "order_count"]
     result_df["holiday"] = result_df["date"].isin(holidays["date"])
 
